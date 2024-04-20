@@ -1,8 +1,10 @@
 # Case-study-How-does-a-bike-share-navigate-speedy-success-
 
+
 Author: Truong Phan
 Date: March 16, 2024
-Introduction
+
+##Introduction
 This is my first project in the data analysis field, set in a fictional context. In this scenario, I serve as a junior data analyst working on the marketing analyst team at Cyclistic. The marketing director believes that increasing the number of annual memberships is crucial for the business’s future success. Consequently, my team aims to determine how casual riders and annual members use Cyclistic bikes differently. Our goal is to provide recommendations that will guide the marketing strategy. Guided by the Google Data Analytics Course, this project will follow the data analysis process: asking questions, preparing data, processing it using SQL in BigQuery, analyzing patterns, sharing insights through Tableau, and finally, proposing actionable strategies. 
 
 
@@ -407,7 +409,8 @@ Warm Weather Campaigns: Introduce a ‘Summer Ride Pass’ that offers unlimited
 Weekend Family Packages: Offer discounted group rates for families or friends to enjoy weekend rides together, potentially including guided tour options to explore new areas.
 Off-Peak Incentives: Implement a dynamic pricing model where rides are cheaper during off-peak hours, encouraging usage throughout the day and reducing congestion during peak times.
 Long Trip Switch Promotion: Encourage casual riders to try classic or electric bikes for their longer trips with a ‘Switch & Save’ campaign, offering a significant discount on the first few rides when switching from docked bikes.
-Conclusion
+
+##Conclusion
 This project presented both a significant challenge and a valuable learning opportunity. Throughout its course, I knew how to carry out six phases of data analysis. Utilizing tools such as SQL in BigQuery, and Tableau, I was able to use data to address the problem. My analysis culminated in recommendations that could inform the company's marketing strategy effectively.
 
 Despite these successes, the project was not without its limitations. Notably, there was a considerable loss of data during the processing phase, and not all available data fields were leveraged. Certain aspects of the presentation also lacked clarity. Additionally, the project could have benefited from more robust data modeling, hypothesis testing, and so on.
