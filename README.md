@@ -5,46 +5,80 @@ Author: Truong Phan
 
 Date: March 16, 2024
 
-##Introduction
+## Introduction
+
 This is my first project in the data analysis field, set in a fictional context. In this scenario, I serve as a junior data analyst working on the marketing analyst team at Cyclistic. The marketing director believes that increasing the number of annual memberships is crucial for the business’s future success. Consequently, my team aims to determine how casual riders and annual members use Cyclistic bikes differently. Our goal is to provide recommendations that will guide the marketing strategy. Guided by the Google Data Analytics Course, this project will follow the data analysis process: asking questions, preparing data, processing it using SQL in BigQuery, analyzing patterns, sharing insights through Tableau, and finally, proposing actionable strategies. 
 
 
-About Cyclistic
+### About Cyclistic
+
 Cyclistic, a bike-share program launched in 2016, now boasts a fleet of 5,824 bicycles. These bikes are tracked and can be unlocked from one station and returned to any other station within the 692 stations across the Chicago network. Until now, Cyclistic’s marketing approach focused on raising general awareness and appealing to a wide range of consumers. Their pricing flexibility, including options like single-ride passes, full-day passes, and annual memberships, has successfully attracted more customers. Specifically, casual riders prefer single-ride or full-day passes. However, Cyclistic’s finance analysts have discovered that annual members are significantly more profitable. Despite the pricing flexibility, maximizing the number of annual members remains crucial for the company’s future growth.
-Body
-1. Ask Phrase
-1.1. Key stakeholder
-Primary Stakeholder: Lily Moreno
+
+## Body
+
+### 1. Ask Phrase
+
+#### 1.1. Key stakeholder
+
+**Primary Stakeholder: Lily Moreno**
+
 Role: Director of Marketing
+
 Responsibilities: Moreno is responsible for developing campaigns and initiatives to promote the bike-share program. Her work may involve channels such as email, social media, and other marketing platforms. As your manager, she is crucial in shaping Cyclistic’s marketing strategy.
-Secondary Stakeholder: Cyclistic Marketing Analytics Team
+
+**Secondary Stakeholder: Cyclistic Marketing Analytics Team**
+
 Role: Data analysts within the marketing team
+
 Responsibilities: This team collects, analyzes, and reports data that informs Cyclistic’s marketing decisions. As a junior data analyst, I collaborate with this team to understand Cyclistic’s mission, and business goals and contribute to achieving them through data-driven insights.
-Additional Stakeholder: Cyclistic Executive Team
+
+**Additional Stakeholder: Cyclistic Executive Team**
+
 Role: The executive team oversees the entire organization.
+
 Responsibilities: They will ultimately decide whether to approve the recommended marketing program. Their attention to detail and strategic decision-making influence Cyclistic’s overall direction and growth.
 
-1.2. Business task statement
+#### 1.2. Business task statement
+
 Analyze historical bike trip data to compare the behavior of annual members and casual riders. Identify trends that can inform the marketing team’s strategies for converting casual riders into annual members.
-2. Prepare Phrase
-2.1. Information about the dataset
+
+### 2. Prepare Phrase
+
+#### 2.1. Information about the dataset
+
 This case study utilized a dataset from a bike-sharing company. The data was publicly available and could be used to explore how different customer types utilize Cyclistic bikes. The dataset consisted of 12 .csv files in long format, containing information on bicycle trips from January 2023 to December 2023. 
-2.2. Data accessibility
+
+#### 2.2. Data accessibility
+
 The data has been made available by Motivate International Inc. The dataset’s license grants a non-exclusive, royalty-free, limited, and perpetual license to access, reproduce, analyze, copy, modify, distribute, and use the data for any lawful purpose. Therefore, I used this data as source material in my project report for non-commercial purposes 
-2.3. Is this data ROCCC ?
+#### 2.3. Is this data ROCCC ?
+
 Reliable:  The dataset appeared to be sourced from official bike-share systems, which suggested reliability. However, to fully assess reliability, I would need additional information about the data collection process, quality control, and any potential biases.
+
 Original: The data was publicly available and could be located at the provided link. It was an original dataset.
+
 Comprehensive: The dataset covered various variables and dimensions, such as rideable type, trip durations,  station name, member or casual, and other relevant details. This level of detail made it comprehensive for bike-share analysis.
+
 Current: The dataset was current as it was collected in 2023 which aligns with the specified timeframe.
+
 Cited: The link to the data didn’t include citations, so it definitely couldn't be cited.
-2.1. Limitations
+
+#### 2.1. Limitations
+
 Due to data privacy concerns, access to riders’ personally identifiable information is restricted. Consequently, it was impossible to determine whether casual riders resided within the Cyclistic service area or if they had purchased multiple single passes. Additionally, the absence of demographic information in the data could introduce sampling bias.
-3. Process Phase
+
+### 3. Process Phase
+
 In the process phase, I leveraged SQL to import, clean, and transform a large dataset containing millions of records (5719877). These critical activities were executed within Google BigQuery, a fully managed enterprise data warehouse provided by Google Cloud. BigQuery offered powerful features for efficient data management and analysis.
-3.1. Import data  
+
+#### 3.1. Import data  
+
 I uploaded .csv files into tables with name conventions from Cyclistic_Trip_January to Cyclistic_Trip_December. In this step, I also separated some files into two parts because the capacity exceeds BiqQuery's upload limit of 100mb. 
-3.2. Merge Data
+
+#### 3.2. Merge Data
+
 UNION ALL operator was used to merge tables into new ones named Cyclistic_Trip_2023, This operator could help keep the original records, even duplicated records. 
+
 CREATE TABLE `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023` AS
 SELECT *
 FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_January`
