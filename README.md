@@ -1,7 +1,8 @@
 # Case-study-How-does-a-bike-share-navigate-speedy-success-
-
+![Capture](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/a2f80b68-1dc1-4be8-bf9f-3e10b98ff532)
 
 Author: Truong Phan
+
 Date: March 16, 2024
 
 ##Introduction
