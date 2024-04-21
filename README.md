@@ -22,21 +22,21 @@ Cyclistic, a bike-share program launched in 2016, now boasts a fleet of 5,824 bi
 
 **Primary Stakeholder: Lily Moreno**
 
-Role: Director of Marketing
+**Role:** Director of Marketing
 
-Responsibilities: Moreno is responsible for developing campaigns and initiatives to promote the bike-share program. Her work may involve channels such as email, social media, and other marketing platforms. As your manager, she is crucial in shaping Cyclistic’s marketing strategy.
+**Responsibilities:** Moreno is responsible for developing campaigns and initiatives to promote the bike-share program. Her work may involve channels such as email, social media, and other marketing platforms. As your manager, she is crucial in shaping Cyclistic’s marketing strategy.
 
 **Secondary Stakeholder: Cyclistic Marketing Analytics Team**
 
-Role: Data analysts within the marketing team
+**Role:** Data analysts within the marketing team
 
-Responsibilities: This team collects, analyzes, and reports data that informs Cyclistic’s marketing decisions. As a junior data analyst, I collaborate with this team to understand Cyclistic’s mission, and business goals and contribute to achieving them through data-driven insights.
+**Responsibilities:** This team collects, analyzes, and reports data that informs Cyclistic’s marketing decisions. As a junior data analyst, I collaborate with this team to understand Cyclistic’s mission, and business goals and contribute to achieving them through data-driven insights.
 
 **Additional Stakeholder: Cyclistic Executive Team**
 
-Role: The executive team oversees the entire organization.
+**Role:** The executive team oversees the entire organization.
 
-Responsibilities: They will ultimately decide whether to approve the recommended marketing program. Their attention to detail and strategic decision-making influence Cyclistic’s overall direction and growth.
+**Responsibilities:** They will ultimately decide whether to approve the recommended marketing program. Their attention to detail and strategic decision-making influence Cyclistic’s overall direction and growth.
 
 #### 1.2. Business task statement
 
@@ -51,6 +51,7 @@ This case study utilized a dataset from a bike-sharing company. The data was pub
 #### 2.2. Data accessibility
 
 The data has been made available by Motivate International Inc. The dataset’s license grants a non-exclusive, royalty-free, limited, and perpetual license to access, reproduce, analyze, copy, modify, distribute, and use the data for any lawful purpose. Therefore, I used this data as source material in my project report for non-commercial purposes 
+
 #### 2.3. Is this data ROCCC ?
 
 Reliable:  The dataset appeared to be sourced from official bike-share systems, which suggested reliability. However, to fully assess reliability, I would need additional information about the data collection process, quality control, and any potential biases.
@@ -79,6 +80,7 @@ I uploaded .csv files into tables with name conventions from Cyclistic_Trip_Janu
 
 UNION ALL operator was used to merge tables into new ones named Cyclistic_Trip_2023, This operator could help keep the original records, even duplicated records. 
 
+```
 CREATE TABLE `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023` AS
 SELECT *
 FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_January`
@@ -133,34 +135,47 @@ FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_November`
 UNION ALL
 SELECT *
 FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_December`
+```
 
-3.3. Checking data structure and data type
+#### 3.3. Checking data structure and data type
+
 Reviewing the schema of the ‘Cyclistic_Trip_2023’ table, it could be seen that fields such as STRING for text-based data and TIMESTAMP for date/time data are correctly assigned. FLOAT was used for latitude and longitude coordinates, which were also appropriately formatted.
 
-ride_id: This is a unique identifier for each trip, helping to distinguish between different trips.
-rideable_type: The type of bicycle used for the trip, such as a standard bike, electric bike, etc.
-started_at and ended_at: The start and end times of the trip.
-start_station_name and end_station_name: The names of the starting and ending stations for the trip.
-start_lat and start_lng, end_lat, and end_lng: The latitude and longitude coordinates of the starting and ending points of the trip.
-member_casual: Classification of the user as a member or a casual (non-member) rider.
-3.4. Checking duplicates
+![image](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/1e5657a6-a8bf-42c9-b9e7-b4236b469bc7)
+
+- ride_id: This is a unique identifier for each trip, helping to distinguish between different trips.
+
+- rideable_type: The type of bicycle used for the trip, such as a standard bike, electric bike, etc.
+
+- started_at and ended_at: The start and end times of the trip.
+
+- start_station_name and end_station_name: The names of the starting and ending stations for the trip.
+
+- start_lat and start_lng, end_lat, and end_lng: The latitude and longitude coordinates of the starting and ending points of the trip.
+
+- member_casual: Classification of the user as a member or a casual (non-member) rider.
+
+#### 3.4. Checking duplicates
+
 I began cleaning data with the DISTINCT operator to check duplicates. This operator helped display a subset of data that only shows unique records.
+
+```
 SELECT DISTINCT *
 FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023`
+```
 
 After running the query, the result showed the total records of 5719877 the same as the original. So I state that there is no duplicate in the data.
-3.5. Handle Missing Values
+
+#### 3.5. Handle Missing Values
+
 I previewed the data frame and found that there are missing values in the start_station_name, start_station_id, end_station_name, and end_station_id.
 
 I used IS NULL to check how many records contain missing values in these columns.
-SELECT
-*
-FROM 
-`cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023`
+
+SELECT *
+FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023`
 WHERE 
 start_station_name IS NULL OR start_station_id IS NULL OR end_station_id IS NULL OR end_station_name IS NULL
-
-
 
 There are 1388054 records containing NULL values in data which capture 24% Cyclistic_Trip_2023. I decided to remove these records to ensure the analysis process was not affected. IS NOT NULL will be used to remove NULL records and the result will be saved in a new table named ”Cyclistic_Trip_2023_Clean”
 
@@ -174,15 +189,12 @@ WHERE
 (start_station_id IS NOT NULL AND start_station_name IS NOT NULL) AND (end_station_id IS NOT NULL AND end_station_name IS NOT NULL)
 
 
-3.6. Adding New Columns and Removing Unnecessary Columns
+#### 3.6. Adding New Columns and Removing Unnecessary Columns
 
 
-In order to gain both an overview and detailed insights into the patterns of bike-sharing service users, I decided to create new columns for our dataset.
-Firstly, I utilized the EXTRACT function to extract detailed time information from the started_at column. Specifically, I extracted the hour (hour), day of the week (day_of_week), and month (month) of each bike ride's start time.
-Additionally, I used the TIMESTAMP_DIFF function to compute the duration of each bike ride based on its start and end times, with the result stored in the duration_mins column.
-Upon careful consideration, I observed that the longitude and latitude columns did not provide useful or correctly positioned information when using Google Maps. Therefore, I opted to remove these two columns from the dataset.
-Eliminating unnecessary columns helped reduce the size of the dataset and focus on more pertinent information for analysis.
+In order to gain both an overview and detailed insights into the patterns of bike-sharing service users, I decided to create new columns for our dataset. Firstly, I utilized the EXTRACT function to extract detailed time information from the started_at column. Specifically, I extracted the hour (hour), day of the week (day_of_week), and month (month) of each bike ride's start time. Additionally, I used the TIMESTAMP_DIFF function to compute the duration of each bike ride based on its start and end times, with the result stored in the duration_mins column. Upon careful consideration, I observed that the longitude and latitude columns did not provide useful or correctly positioned information when using Google Maps. Therefore, I opted to remove these two columns from the dataset. Eliminating unnecessary columns helped reduce the size of the dataset and focus on more pertinent information for analysis.
 Below is the SQL code illustrating these steps:
+
 CREATE TABLE
 `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_new` AS
  SELECT
@@ -200,10 +212,7 @@ CREATE TABLE
   FROM  
    `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_Clean`
 
-
-
-
-3.7. Solving negative and too-large values
+#### 3.7. Solving negative and too-large values
 When double-checking the data, I found some unusual records. The duration_mins column of these records had the containing negative values or very large values. Then, I used COUNTIF() to see how many records in total contain unusual durations.
 SELECT
 COUNTIF(duration_mins <= 0) AS Negative,
