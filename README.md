@@ -3,7 +3,7 @@
 
 Author: Truong Phan
 
-Date: March 16, 2024
+Date: April 21, 2024
 
 ## Introduction
 
@@ -22,21 +22,21 @@ Cyclistic, a bike-share program launched in 2016, now boasts a fleet of 5,824 bi
 
 **Primary Stakeholder: Lily Moreno**
 
-**Role:** Director of Marketing
+-**Role:** Director of Marketing
 
-**Responsibilities:** Moreno is responsible for developing campaigns and initiatives to promote the bike-share program. Her work may involve channels such as email, social media, and other marketing platforms. As your manager, she is crucial in shaping Cyclistic’s marketing strategy.
+-**Responsibilities:** Moreno is responsible for developing campaigns and initiatives to promote the bike-share program. Her work may involve channels such as email, social media, and other marketing platforms. As your manager, she is crucial in shaping Cyclistic’s marketing strategy.
 
 **Secondary Stakeholder: Cyclistic Marketing Analytics Team**
 
-**Role:** Data analysts within the marketing team
+-**Role:** Data analysts within the marketing team
 
-**Responsibilities:** This team collects, analyzes, and reports data that informs Cyclistic’s marketing decisions. As a junior data analyst, I collaborate with this team to understand Cyclistic’s mission, and business goals and contribute to achieving them through data-driven insights.
+-**Responsibilities:** This team collects, analyzes, and reports data that informs Cyclistic’s marketing decisions. As a junior data analyst, I collaborate with this team to understand Cyclistic’s mission, and business goals and contribute to achieving them through data-driven insights.
 
 **Additional Stakeholder: Cyclistic Executive Team**
 
-**Role:** The executive team oversees the entire organization.
+-**Role:** The executive team oversees the entire organization.
 
-**Responsibilities:** They will ultimately decide whether to approve the recommended marketing program. Their attention to detail and strategic decision-making influence Cyclistic’s overall direction and growth.
+-**Responsibilities:** They will ultimately decide whether to approve the recommended marketing program. Their attention to detail and strategic decision-making influence Cyclistic’s overall direction and growth.
 
 #### 1.2. Business task statement
 
@@ -54,15 +54,15 @@ The data has been made available by Motivate International Inc. The dataset’s 
 
 #### 2.3. Is this data ROCCC ?
 
-Reliable:  The dataset appeared to be sourced from official bike-share systems, which suggested reliability. However, to fully assess reliability, I would need additional information about the data collection process, quality control, and any potential biases.
+**Reliable**:  The dataset appeared to be sourced from official bike-share systems, which suggested reliability. However, to fully assess reliability, I would need additional information about the data collection process, quality control, and any potential biases.
 
-Original: The data was publicly available and could be located at the provided link. It was an original dataset.
+**Original**: The data was publicly available and could be located at the provided link. It was an original dataset.
 
-Comprehensive: The dataset covered various variables and dimensions, such as rideable type, trip durations,  station name, member or casual, and other relevant details. This level of detail made it comprehensive for bike-share analysis.
+**Comprehensive**: The dataset covered various variables and dimensions, such as rideable type, trip durations,  station name, member or casual, and other relevant details. This level of detail made it comprehensive for bike-share analysis.
 
-Current: The dataset was current as it was collected in 2023 which aligns with the specified timeframe.
+**Current**: The dataset was current as it was collected in 2023 which aligns with the specified timeframe.
 
-Cited: The link to the data didn’t include citations, so it definitely couldn't be cited.
+**Cited**: The link to the data didn’t include citations, so it definitely couldn't be cited.
 
 #### 2.1. Limitations
 
@@ -504,11 +504,14 @@ In the Share Phase of our data analysis process, I developed a comprehensive das
 
 #### 5.1. Visualizations
 **Members**
-<div class='tableauPlaceholder' id='viz1713680375281' style='position: relative'><noscript><a href='#'><img alt='Tableau de bord 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Cy&#47;CyclisticTrips2023&#47;Tableaudebord1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='CyclisticTrips2023&#47;Tableaudebord1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Cy&#47;CyclisticTrips2023&#47;Tableaudebord1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='fr-FR' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1713680375281');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else { vizElement.style.width='100%';vizElement.style.height='2077px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+
+![Tableau de bord 1 (2)](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/ee842f30-9afb-4fcc-b503-7a54c8d78c59)
+
 **Casuals**
 
+![Tableau de bord 1 (3)](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/0f7085fa-0204-4263-b3ce-f7f51b23fe35)
 
-Viewers can also access the dashboard here: https://public.tableau.com/views/CyclisticTrips2023/Tableaudebord1?:language=en-US&:sid=&:display_count=n&:origin=viz_share_link
+Viewers can also access the dashboard here: [https://public.tableau.com/views/CyclisticTrips2023/Tableaudebord1?:language=en-US&:sid=&:display_count=n&:origin=viz_share_link]
 
 #### 5.2. Key findings
 
@@ -544,7 +547,8 @@ Viewers can also access the dashboard here: https://public.tableau.com/views/Cyc
   
 - Long Trip Switch Promotion: Encourage casual riders to try classic or electric bikes for their longer trips with a ‘Switch & Save’ campaign, offering a significant discount on the first few rides when switching from docked bikes.
 
-##Conclusion
+## Conclusion
+
 This project presented both a significant challenge and a valuable learning opportunity. Throughout its course, I knew how to carry out six phases of data analysis. Utilizing tools such as SQL in BigQuery, and Tableau, I was able to use data to address the problem. My analysis culminated in recommendations that could inform the company's marketing strategy effectively.
 
 Despite these successes, the project was not without its limitations. Notably, there was a considerable loss of data during the processing phase, and not all available data fields were leveraged. Certain aspects of the presentation also lacked clarity. Additionally, the project could have benefited from more robust data modeling, hypothesis testing, and so on.
