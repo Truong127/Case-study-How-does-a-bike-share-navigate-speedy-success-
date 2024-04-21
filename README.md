@@ -9,7 +9,6 @@ Date: April 21, 2024
 
 This is my first project in the data analysis field, set in a fictional context. In this scenario, I serve as a junior data analyst working on the marketing analyst team at Cyclistic. The marketing director believes that increasing the number of annual memberships is crucial for the business’s future success. Consequently, my team aims to determine how casual riders and annual members use Cyclistic bikes differently. Our goal is to provide recommendations that will guide the marketing strategy. Guided by the Google Data Analytics Course, this project will follow the data analysis process: asking questions, preparing data, processing it using SQL in BigQuery, analyzing patterns, sharing insights through Tableau, and finally, proposing actionable strategies. 
 
-
 ### About Cyclistic
 
 Cyclistic, a bike-share program launched in 2016, now boasts a fleet of 5,824 bicycles. These bikes are tracked and can be unlocked from one station and returned to any other station within the 692 stations across the Chicago network. Until now, Cyclistic’s marketing approach focused on raising general awareness and appealing to a wide range of consumers. Their pricing flexibility, including options like single-ride passes, full-day passes, and annual memberships, has successfully attracted more customers. Specifically, casual riders prefer single-ride or full-day passes. However, Cyclistic’s finance analysts have discovered that annual members are significantly more profitable. Despite the pricing flexibility, maximizing the number of annual members remains crucial for the company’s future growth.
@@ -22,21 +21,21 @@ Cyclistic, a bike-share program launched in 2016, now boasts a fleet of 5,824 bi
 
 **Primary Stakeholder: Lily Moreno**
 
--**Role:** Director of Marketing
+- **Role:** Director of Marketing
 
--**Responsibilities:** Moreno is responsible for developing campaigns and initiatives to promote the bike-share program. Her work may involve channels such as email, social media, and other marketing platforms. As your manager, she is crucial in shaping Cyclistic’s marketing strategy.
+- **Responsibilities:** Moreno is responsible for developing campaigns and initiatives to promote the bike-share program. Her work may involve channels such as email, social media, and other marketing platforms. As your manager, she is crucial in shaping Cyclistic’s marketing strategy.
 
 **Secondary Stakeholder: Cyclistic Marketing Analytics Team**
 
--**Role:** Data analysts within the marketing team
+- **Role:** Data analysts within the marketing team
 
--**Responsibilities:** This team collects, analyzes, and reports data that informs Cyclistic’s marketing decisions. As a junior data analyst, I collaborate with this team to understand Cyclistic’s mission, and business goals and contribute to achieving them through data-driven insights.
+- **Responsibilities:** This team collects, analyzes, and reports data that informs Cyclistic’s marketing decisions. As a junior data analyst, I collaborate with this team to understand Cyclistic’s mission, and business goals and contribute to achieving them through data-driven insights.
 
 **Additional Stakeholder: Cyclistic Executive Team**
 
--**Role:** The executive team oversees the entire organization.
+- **Role:** The executive team oversees the entire organization.
 
--**Responsibilities:** They will ultimately decide whether to approve the recommended marketing program. Their attention to detail and strategic decision-making influence Cyclistic’s overall direction and growth.
+- **Responsibilities:** They will ultimately decide whether to approve the recommended marketing program. Their attention to detail and strategic decision-making influence Cyclistic’s overall direction and growth.
 
 #### 1.2. Business task statement
 
@@ -81,60 +80,79 @@ I uploaded .csv files into tables with name conventions from Cyclistic_Trip_Janu
 UNION ALL operator was used to merge tables into new ones named Cyclistic_Trip_2023, This operator could help keep the original records, even duplicated records. 
 
 ```
-CREATE TABLE `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023` AS
-SELECT *
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_January`
-UNION ALL
-SELECT *
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_February`
-UNION ALL
-SELECT *
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_March`
-UNION ALL
-SELECT *
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_April`
-UNION ALL
-SELECT *
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_May_part_1`
-UNION ALL
-SELECT *
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_May_part_2`
-UNION ALL
-SELECT *
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_June_part_1`
-UNION ALL
-SELECT *
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_June_part_2`
-UNION ALL
-SELECT *
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_July_part_1`
-UNION ALL
-SELECT *
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_July_part_2`
-UNION ALL
-SELECT *
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_August_part_1`
-UNION ALL
-SELECT *
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_August_part_2`
-UNION ALL
-SELECT *
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_September_part_1`
-UNION ALL
-SELECT *
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_September_part_2`
-UNION ALL
-SELECT *
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_October_part_1`
-UNION ALL
-SELECT *
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_October_part_2`
-UNION ALL
-SELECT *
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_November`
-UNION ALL
-SELECT *
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_December`
+CREATE TABLE
+ `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023` AS
+ SELECT *
+ FROM
+  `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_January`
+ UNION ALL
+ SELECT *
+ FROM
+  `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_February`
+ UNION ALL
+ SELECT *
+ FROM
+  `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_March`
+ UNION ALL
+ SELECT *
+ FROM
+  `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_April`
+ UNION ALL
+ SELECT *
+ FROM
+  `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_May_part_1`
+ UNION ALL
+ SELECT *
+ FROM
+  `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_May_part_2`
+ UNION ALL
+ SELECT *
+ FROM
+  `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_June_part_1`
+ UNION ALL
+ SELECT *
+ FROM
+  `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_June_part_2`
+ UNION ALL
+ SELECT *
+ FROM
+  `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_July_part_1`
+ UNION ALL
+ SELECT *
+ FROM
+  `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_July_part_2`
+ UNION ALL
+ SELECT *
+ FROM
+  `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_August_part_1`
+ UNION ALL
+ SELECT *
+ FROM
+  `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_August_part_2`
+ UNION ALL
+ SELECT *
+ FROM
+  `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_September_part_1`
+ UNION ALL
+ SELECT *
+ FROM
+  `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_September_part_2`
+ UNION ALL
+ SELECT *
+ FROM
+  `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_October_part_1`
+ UNION ALL
+ SELECT *
+ FROM
+  `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_October_part_2`
+ UNION ALL
+ SELECT *
+ FROM
+  `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_November`
+ UNION ALL
+ SELECT *
+ FROM
+  `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_December`
 ```
 
 #### 3.3. Checking data structure and data type
@@ -160,8 +178,10 @@ Reviewing the schema of the ‘Cyclistic_Trip_2023’ table, it could be seen th
 I began cleaning data with the DISTINCT operator to check duplicates. This operator helped display a subset of data that only shows unique records.
 
 ```
-SELECT COUNT(DISTINCT ride_id) AS total_distinct_rows
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023`
+SELECT
+ COUNT(DISTINCT ride_id) AS total_distinct_rows
+FROM
+ `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023`
 ```
 ![image](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/e4b5c3d3-9408-46ae-ad3d-83161b6accf4)
 
@@ -172,23 +192,25 @@ After running the query, the result showed the total records of 5719877 the same
 I previewed the data frame and found that there are missing values in the start_station_name, start_station_id, end_station_name, and end_station_id. So, I used IS NULL to check how many records contain missing values in these columns.
 
 ```
-SELECT COUNT(*) AS total_nulls
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023`
-WHERE start_station_name IS NULL OR start_station_id IS NULL OR end_station_id IS NULL OR end_station_name IS NULL
+SELECT
+ COUNT(*) AS total_nulls
+FROM
+ `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023`
+WHERE
+ start_station_name IS NULL OR start_station_id IS NULL OR end_station_id IS NULL OR end_station_name IS NULL
 ```
 ![image](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/754e513d-4f28-4b78-882b-29631769f32b)
 
 There are 1388054 records containing NULL values in data which capture 24% Cyclistic_Trip_2023. I decided to remove these records to ensure the analysis process was not affected. IS NOT NULL will be used to remove NULL records and the result will be saved in a new table named ”Cyclistic_Trip_2023_Clean”
 
 ```
-CREATE TABLE 
-`cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_Clean` AS
-SELECT
- *
-FROM
-`cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023`
-WHERE
-(start_station_id IS NOT NULL AND start_station_name IS NOT NULL) AND (end_station_id IS NOT NULL AND end_station_name IS NOT NULL)
+CREATE TABLE
+ `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_Clean` AS
+ SELECT *
+ FROM
+  `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023`
+ WHERE
+  (start_station_id IS NOT NULL AND start_station_name IS NOT NULL) AND (end_station_id IS NOT NULL AND end_station_name IS NOT NULL)
 ```
 
 #### 3.6. Adding New Columns and Removing Unnecessary Columns
@@ -211,7 +233,7 @@ CREATE TABLE
     end_station_id,
     end_station_name,
     member_casual
-  FROM  
+  FROM
    `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_Clean`
 ```
 
@@ -221,9 +243,10 @@ When double-checking the data, I found some unusual records. The duration_mins c
 
 ```
 SELECT
-COUNTIF(duration_mins <= 0) AS Negative,
-COUNTIF(duration_mins >= 1440) AS Too_large
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_new`
+ COUNTIF(duration_mins <= 0) AS Negative,
+ COUNTIF(duration_mins >= 1440) AS Too_large
+FROM
+ `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_new`
 ```
 
 ![image](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/fcfef45c-7348-4ee7-993d-2338b3daaa8d)
@@ -231,12 +254,13 @@ FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_new`
 There were a total of 87651 unusual records. This would impact the duration analysis if I keep these records. So I continued to remove records. At the same time, I also used CASE to convert the values 1 to 7 in the weekday column to Sunday to Saturday. This makes it easier to see during analysis and visualization. The results will be saved in a new table named Cyclistic_trip_2023_final.
 
 ```
-CREATE TABLE `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final` AS
-SELECT
-ride_id,
-rideable_type,
-hour,
- CASE day_of_week
+CREATE TABLE
+ `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final` AS
+ SELECT
+  ride_id,
+  rideable_type,
+  hour,
+  CASE day_of_week
         WHEN 1 THEN 'Sunday'
         WHEN 2 THEN 'Monday'
         WHEN 3 THEN 'Tuesday'
@@ -244,17 +268,18 @@ hour,
         WHEN 5 THEN 'Thursday'
         WHEN 6 THEN 'Friday'
         WHEN 7 THEN 'Saturday'
-    END AS day_of_week,
+ END AS day_of_week,
    month,
-duration_mins,
-start_station_id,
-start_station_name,
-end_station_id,
-end_station_name,
-member_casual
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_new`
+ duration_mins,
+ start_station_id,
+ start_station_name,
+ end_station_id,
+ end_station_name,
+ member_casual
+FROM
+ `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_new`
 WHERE
-duration_mins > 0 AND duration_mins < 1440
+ duration_mins > 0 AND duration_mins < 1440
 ```
 
 ### 4. Analyze Phrase
@@ -264,12 +289,16 @@ duration_mins > 0 AND duration_mins < 1440
 First of all, I compared the total number of trips taken by members and casual customers on a monthly, weekly, and hourly basis. I examined which group contributed more to their preferred trip volume and rideable types.
 
 ```
-SELECT member_casual,
-COUNT (*) AS total_trips,
-COUNTIF(rideable_type = "docked_bike") AS docked_bike_trips,
-COUNTIF(rideable_type = "classic_bike") AS classic_bike_trips,
-COUNTIF(rideable_type = "electric_bike") AS electric_bike_trips,
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final` GROUP BY member_casual
+SELECT
+ member_casual,
+ COUNT (*) AS total_trips,
+ COUNTIF(rideable_type = "docked_bike") AS docked_bike_trips,
+ COUNTIF(rideable_type = "classic_bike") AS classic_bike_trips,
+ COUNTIF(rideable_type = "electric_bike") AS electric_bike_trips,
+FROM
+ `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
+GROUP BY
+ member_casual
 ```
 
 ![image](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/fecbc548-420d-4e14-bc3e-4aec7fa2aca6)
@@ -281,14 +310,19 @@ In total, members were the driving force behind total trips (2,738,867 trips), i
 **Member**
 
 ```
-SELECT month,
-COUNT (*) AS number_trips, 
-COUNTIF(rideable_type = "classic_bike") AS classic_bike_trips,
-COUNTIF(rideable_type = "electric_bike") AS electric_bike_trips,
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
-WHERE member_casual = "member"
-GROUP BY month
-ORDER BY number_trips DESC
+SELECT
+ month,
+ COUNT (*) AS number_trips, 
+ COUNTIF(rideable_type = "classic_bike") AS classic_bike_trips,
+ COUNTIF(rideable_type = "electric_bike") AS electric_bike_trips,
+FROM
+ `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
+WHERE
+ member_casual = "member"
+GROUP BY
+ month
+ORDER BY
+ number_trips DESC
 ```
 ![image](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/d3ff58a9-61ed-4a17-9823-2d950159c962)
 
@@ -297,15 +331,20 @@ The highest number of member trips occurred during the warmer months, with July 
 **Casuals**
 
 ```
-SELECT month,
-COUNT (*) AS number_trips,
-COUNTIF(rideable_type = "docked_bike") AS docked_bike_trips,
-COUNTIF(rideable_type = "classic_bike") AS classic_bike_trips,
-COUNTIF(rideable_type = "electric_bike") AS electric_bike_trips,
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
-WHERE member_casual = "casual"
-GROUP BY month
-ORDER BY number_trips DESC
+SELECT
+ month,
+ COUNT (*) AS number_trips,
+ COUNTIF(rideable_type = "docked_bike") AS docked_bike_trips,
+ COUNTIF(rideable_type = "classic_bike") AS classic_bike_trips,
+ COUNTIF(rideable_type = "electric_bike") AS electric_bike_trips,
+FROM
+ `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
+WHERE
+ member_casual = "casual"
+GROUP BY
+ month
+ORDER BY
+ number_trips DESC
 ```
 
 ![image](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/be3ab66d-3438-4a31-966c-1a5c7f6bf670)
@@ -317,14 +356,19 @@ Like members, casuals tended to take more trips during the warmer months, while 
 **Member**
 
 ```
-SELECT day_of_week,
-COUNT (*) AS number_trips,
-COUNTIF(rideable_type = "classic_bike") AS classic_bike_trips,
-COUNTIF(rideable_type = "electric_bike") AS electric_bike_trips,
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
-WHERE member_casual = "member"
-GROUP BY day_of_week
-ORDER BY number_trips DESC
+SELECT
+ day_of_week,
+ COUNT (*) AS number_trips,
+ COUNTIF(rideable_type = "classic_bike") AS classic_bike_trips,
+ COUNTIF(rideable_type = "electric_bike") AS electric_bike_trips,
+FROM
+ `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
+WHERE
+ member_casual = "member"
+GROUP BY
+ day_of_week
+ORDER BY
+ number_trips DESC
 ```
 ![image](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/44a96eec-f0f5-4549-9822-89e2af4b8c67)
 
@@ -333,15 +377,20 @@ Cyclistic members took the most trips on Tuesday, Wednesday, and Thursday, with 
 **Casuals**
 
 ```
-SELECT day_of_week,
-COUNT (*) AS number_trips,
-COUNTIF(rideable_type = "docked_bike") AS docked_bike_trips,
-COUNTIF(rideable_type = "classic_bike") AS classic_bike_trips,
-COUNTIF(rideable_type = "electric_bike") AS electric_bike_trips,
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
-WHERE member_casual = "casual"
-GROUP BY day_of_week
-ORDER BY number_trips DESC
+SELECT
+ day_of_week,
+ COUNT (*) AS number_trips,
+ COUNTIF(rideable_type = "docked_bike") AS docked_bike_trips,
+ COUNTIF(rideable_type = "classic_bike") AS classic_bike_trips,
+ COUNTIF(rideable_type = "electric_bike") AS electric_bike_trips,
+FROM
+ `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
+WHERE
+ member_casual = "casual"
+GROUP BY
+ day_of_week
+ORDER BY
+ number_trips DESC
 ```
 
 ![image](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/3056e1c0-fa95-4986-8b73-4435511dfbcb)
@@ -353,14 +402,19 @@ In contrast to members, casuals were most active on weekend days. The number of 
 **Member**
 
 ```
-SELECT hour,
-COUNT(*) AS total_trips,
-COUNTIF(rideable_type = "classic_bike") AS classic_bike_trips,
-COUNTIF(rideable_type = "electric_bike") AS electric_bike_trips,
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
-WHERE member_casual = "member"
-GROUP BY hour
-ORDER BY total_trips DESC
+SELECT
+ hour,
+ COUNT(*) AS total_trips,
+ COUNTIF(rideable_type = "classic_bike") AS classic_bike_trips,
+ COUNTIF(rideable_type = "electric_bike") AS electric_bike_trips,
+FROM
+ `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
+WHERE
+ member_casual = "member"
+GROUP BY
+ hour
+ORDER BY
+ total_trips DESC
 ```
 ![image](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/1571d090-e339-4eb9-92ae-7be8d6e0ddd5)
 
@@ -369,15 +423,20 @@ The data shows that members were active throughout the day, with the evening bei
 **Casuals**
 
 ```
-SELECT hour,
-COUNT(*) AS total_trips,
-COUNTIF(rideable_type = "docked_bike") AS docked_bike_trips,
-COUNTIF(rideable_type = "classic_bike") AS classic_bike_trips,
-COUNTIF(rideable_type = "electric_bike") AS electric_bike_trips,
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
-WHERE member_casual = "casual"
-GROUP BY hour
-ORDER BY total_trips DESC
+SELECT
+ hour,
+ COUNT(*) AS total_trips,
+ COUNTIF(rideable_type = "docked_bike") AS docked_bike_trips,
+ COUNTIF(rideable_type = "classic_bike") AS classic_bike_trips,
+ COUNTIF(rideable_type = "electric_bike") AS electric_bike_trips,
+FROM
+ `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
+WHERE
+ member_casual = "casual"
+GROUP BY
+ hour
+ORDER BY
+ total_trips DESC
 ```
 
 ![image](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/4a9ddb76-812f-4eb2-ade3-a9b257c9e83a)
@@ -392,10 +451,11 @@ Next, I investigated the minimum, maximum, and average usage duration (in minute
 
 ```
 SELECT
-MIN(duration_mins) AS Min,
-MAX(duration_mins) AS MAX,
-AVG(duration_mins) AS AVG
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
+ MIN(duration_mins) AS Min,
+ MAX(duration_mins) AS MAX,
+ AVG(duration_mins) AS AVG
+FROM
+ `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
 WHERE
  member_casual = "member"
 ```
@@ -408,11 +468,13 @@ Member customers had a wide range of usage durations, with the shortest recorded
 
 ```
 SELECT
-MIN(duration_mins) AS Min,
-MAX(duration_mins) AS MAX,
-AVG(duration_mins) AS AVG
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
-WHERE member_casual = "casual"
+ MIN(duration_mins) AS Min,
+ MAX(duration_mins) AS MAX,
+ AVG(duration_mins) AS AVG
+FROM
+ `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
+WHERE
+ member_casual = "casual"
 ```
 
 ![image](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/046a642e-20b0-4b8a-8038-bd014bfa0506)
@@ -427,13 +489,15 @@ Additionally, I broke down the usage duration by rideable types.
 
 ```
 SELECT
-rideable_type,
-MIN(duration_mins) AS Min,
-MAX(duration_mins) AS MAX,
-AVG(duration_mins) AS AVG
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
-WHERE member_casual = "member"
-GROUP BY rideable_type
+ rideable_type,
+ MIN(duration_mins) AS Min,
+ MAX(duration_mins) AS MAX,
+ AVG(duration_mins) AS AVG
+ FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
+WHERE
+ member_casual = "member"
+GROUP BY
+ rideable_type
 ```
 
 ![image](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/62be2d53-f212-4137-b52b-6fbcc4cb3cfb)
@@ -444,13 +508,16 @@ Classic and electric bikes had the same minimum usage duration of 1 minute. Abou
 
 ```
 SELECT
-rideable_type,
-MIN(duration_mins) AS Min,
-MAX(duration_mins) AS MAX,
-AVG(duration_mins) AS AVG
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
-WHERE member_casual = "casual"
-GROUP BY rideable_type
+ rideable_type,
+ MIN(duration_mins) AS Min,
+ MAX(duration_mins) AS MAX,
+ AVG(duration_mins) AS AVG
+FROM
+ `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
+WHERE
+ member_casual = "casual"
+GROUP BY
+ rideable_type
 ```
 
 ![image](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/2afc5390-c7b2-48f8-9f85-7b854eeb9885)
@@ -464,14 +531,19 @@ I identified the top 5 start stations based on total trips. Furthermore, I analy
 **Member**
 
 ```
-SELECT start_station_name,
-COUNT(*) AS total_trips,
-COUNTIF(rideable_type = "classic_bike") AS classic_bike_trips,
-COUNTIF(rideable_type = "electric_bike") AS electric_bike_trips,
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
-WHERE member_casual = "member"
-GROUP BY start_station_name
-ORDER BY total_trips DESC
+SELECT
+ start_station_name,
+ COUNT(*) AS total_trips,
+ COUNTIF(rideable_type = "classic_bike") AS classic_bike_trips,
+ COUNTIF(rideable_type = "electric_bike") AS electric_bike_trips,
+FROM
+ `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
+WHERE
+ member_casual = "member"
+GROUP BY
+ start_station_name
+ORDER BY
+ total_trips DESC
 LIMIT 5
 ```
 
@@ -482,15 +554,20 @@ The starting stations for members were typically situated in the northwest area 
 **Casuals**
 
 ```
-SELECT start_station_name,
-COUNT(*) AS total_trips,
-COUNTIF(rideable_type = "docked_bike") AS docked_bike_trips,
-COUNTIF(rideable_type = "classic_bike") AS classic_bike_trips,
-COUNTIF(rideable_type = "electric_bike") AS electric_bike_trips,
-FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
-WHERE member_casual = "casual"
-GROUP BY start_station_name
-ORDER BY total_trips DESC
+SELECT
+ start_station_name,
+ COUNT(*) AS total_trips,
+ COUNTIF(rideable_type = "docked_bike") AS docked_bike_trips,
+ COUNTIF(rideable_type = "classic_bike") AS classic_bike_trips,
+ COUNTIF(rideable_type = "electric_bike") AS electric_bike_trips,
+FROM
+ `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
+WHERE
+ member_casual = "casual"
+GROUP BY
+ start_station_name
+ORDER BY
+ total_trips DESC
 LIMIT 5
 ```
 
