@@ -193,10 +193,10 @@ WHERE
 
 #### 3.6. Adding New Columns and Removing Unnecessary Columns
 
-
 In order to gain both an overview and detailed insights into the patterns of bike-sharing service users, I decided to create new columns for our dataset. Firstly, I utilized the EXTRACT function to extract detailed time information from the started_at column. Specifically, I extracted the hour (hour), day of the week (day_of_week), and month (month) of each bike ride's start time. Additionally, I used the TIMESTAMP_DIFF function to compute the duration of each bike ride based on its start and end times, with the result stored in the duration_mins column. Upon careful consideration, I observed that the longitude and latitude columns did not provide useful or correctly positioned information when using Google Maps. Therefore, I opted to remove these two columns from the dataset. Eliminating unnecessary columns helped reduce the size of the dataset and focus on more pertinent information for analysis.
 Below is the SQL code illustrating these steps:
 
+```
 CREATE TABLE
 `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_new` AS
  SELECT
@@ -213,17 +213,24 @@ CREATE TABLE
     member_casual
   FROM  
    `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_Clean`
+```
 
 #### 3.7. Solving negative and too-large values
+
 When double-checking the data, I found some unusual records. The duration_mins column of these records had the containing negative values or very large values. Then, I used COUNTIF() to see how many records in total contain unusual durations.
+
+```
 SELECT
 COUNTIF(duration_mins <= 0) AS Negative,
 COUNTIF(duration_mins >= 1440) AS Too_large
 FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_new`
+```
 
-
+![image](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/fcfef45c-7348-4ee7-993d-2338b3daaa8d)
 
 There were a total of 87651 unusual records. This would impact the duration analysis if I keep these records. So I continued to remove records. At the same time, I also used CASE to convert the values 1 to 7 in the weekday column to Sunday to Saturday. This makes it easier to see during analysis and visualization. The results will be saved in a new table named Cyclistic_trip_2023_final.
+
+```
 CREATE TABLE `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final` AS
 SELECT
 ride_id,
@@ -248,21 +255,32 @@ member_casual
 FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_new`
 WHERE
 duration_mins > 0 AND duration_mins < 1440
+```
 
+### 4. Analyze Phrase
 
-4. Analyze Phrase
-4.1.Total trips
+#### 4.1.Total trips
+
 First of all, I compared the total number of trips taken by members and casual customers on a monthly, weekly, and hourly basis. I examined which group contributed more to their preferred trip volume and rideable types.
+
+```
 SELECT member_casual,
 COUNT (*) AS total_trips,
 COUNTIF(rideable_type = "docked_bike") AS docked_bike_trips,
 COUNTIF(rideable_type = "classic_bike") AS classic_bike_trips,
 COUNTIF(rideable_type = "electric_bike") AS electric_bike_trips,
 FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final` GROUP BY member_casual
+```
+
+![image](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/fecbc548-420d-4e14-bc3e-4aec7fa2aca6)
 
 In total, members were the driving force behind total trips (2,738,867 trips), indicating their strong engagement with Cyclistic services. Both casual and member customers favored classic bikes. Again, members led the way with 950,116 electric bike trips, compared to casuals’ 569,179. Interestingly, casual customers also used docked bikes, while members didn’t utilize them.
-4.1.1. Monthly Trips
-Member
+
+##### 4.1.1. Monthly Trips
+
+**Member**
+
+```
 SELECT month,
 COUNT (*) AS number_trips, 
 COUNTIF(rideable_type = "classic_bike") AS classic_bike_trips,
@@ -271,16 +289,14 @@ FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
 WHERE member_casual = "member"
 GROUP BY month
 ORDER BY number_trips DESC
-
-
-
-
-
-
-
+```
+![image](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/d3ff58a9-61ed-4a17-9823-2d950159c962)
 
 The highest number of member trips occurred during the warmer months, with July and August being the peak months. As the weather cooled down, the number of trips decreased significantly. Classic bikes were the top choice among members.
-Casuals
+
+**Casuals**
+
+```
 SELECT month,
 COUNT (*) AS number_trips,
 COUNTIF(rideable_type = "docked_bike") AS docked_bike_trips,
@@ -290,12 +306,17 @@ FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
 WHERE member_casual = "casual"
 GROUP BY month
 ORDER BY number_trips DESC
+```
 
+![image](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/be3ab66d-3438-4a31-966c-1a5c7f6bf670)
 
-Like annual members, casual customers tended to take more trips during the warmer months, while trip numbers decreased in the cooler months. Among casual riders, classic bikes were the preferred choice, followed by electric bikes. Docked bikes are the least used and even there are no trips from September to December. 
+Like members, casuals tended to take more trips during the warmer months, while trip numbers decreased in the cooler months. Among casual riders, classic bikes were the preferred choice, followed by electric bikes. Docked bikes are the least used and even there are no trips from September to December. 
 
-4.1.2. Weekly trips
-Member
+##### 4.1.2. Weekly trips
+
+**Member**
+
+```
 SELECT day_of_week,
 COUNT (*) AS number_trips,
 COUNTIF(rideable_type = "classic_bike") AS classic_bike_trips,
@@ -304,9 +325,14 @@ FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
 WHERE member_casual = "member"
 GROUP BY day_of_week
 ORDER BY number_trips DESC
+```
+![image](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/44a96eec-f0f5-4549-9822-89e2af4b8c67)
 
 Cyclistic members took the most trips on Tuesday, Wednesday, and Thursday, with fewer trips as the weekend approached. Sunday had the lowest member activity. Classic bikes were the most popular choice throughout the week, followed by electric bikes.
-Casuals
+
+**Casuals**
+
+```
 SELECT day_of_week,
 COUNT (*) AS number_trips,
 COUNTIF(rideable_type = "docked_bike") AS docked_bike_trips,
@@ -316,12 +342,17 @@ FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
 WHERE member_casual = "casual"
 GROUP BY day_of_week
 ORDER BY number_trips DESC
+```
 
+![image](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/3056e1c0-fa95-4986-8b73-4435511dfbcb)
 
+In contrast to members, casuals were most active on weekend days. The number of trips decreased progressively on weekdays. Electric bike trips were particularly popular among casuals.
 
-In contrast to member customers, casual customers were most active on weekend days. The number of trips decreased progressively on weekdays. Electric bike trips were particularly popular among casual customers.
-4.1.3. Hourly trips
-Member
+##### 4.1.3. Hourly trips
+
+**Member**
+
+```
 SELECT hour,
 COUNT(*) AS total_trips,
 COUNTIF(rideable_type = "classic_bike") AS classic_bike_trips,
@@ -330,14 +361,14 @@ FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
 WHERE member_casual = "member"
 GROUP BY hour
 ORDER BY total_trips DESC
+```
+![image](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/1571d090-e339-4eb9-92ae-7be8d6e0ddd5)
 
 The data shows that members were active throughout the day, with the evening being the busiest period when a large number of trips took place. Trip numbers decreased significantly during the night. Notably, classic bikes were used for more trips compared to electric bikes.
 
+**Casuals**
 
-
-
-
-Casuals
+```
 SELECT hour,
 COUNT(*) AS total_trips,
 COUNTIF(rideable_type = "docked_bike") AS docked_bike_trips,
@@ -347,11 +378,19 @@ FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
 WHERE member_casual = "casual"
 GROUP BY hour
 ORDER BY total_trips DESC
+```
+
+![image](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/4a9ddb76-812f-4eb2-ade3-a9b257c9e83a)
 
 Contrary to members, the majority of casual customers tended to start their trips in the afternoon and evening. Among the available options, classic bikes were the most preferred choice, followed by electric bikes and docked bikes.
-4.2. Duration of bicycle use
+
+#### 4.2. Duration of bicycle use
+
 Next, I investigated the minimum, maximum, and average usage duration (in minutes) for both members and casual customers. 
-Member
+
+**Member**
+
+```
 SELECT
 MIN(duration_mins) AS Min,
 MAX(duration_mins) AS MAX,
@@ -359,23 +398,34 @@ AVG(duration_mins) AS AVG
 FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
 WHERE
  member_casual = "member"
+```
+
+![image](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/16f8b1c9-6b3f-4934-88f2-c9adeee31e87)
 
 Member customers had a wide range of usage durations, with the shortest recorded at 1 minute and the longest at 1,439 minutes. This indicated that some members may take very brief trips or perhaps test the bikes briefly. While some others relied heavily on the service for extended periods, possibly for leisurely rides, commuting, or longer travel. On average, customers used the service for approximately 11.88 minutes, suggesting most used it for short journeys.
-Casuals
+
+**Casuals**
+
+```
 SELECT
 MIN(duration_mins) AS Min,
 MAX(duration_mins) AS MAX,
 AVG(duration_mins) AS AVG
 FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
-WHERE
- member_casual = "casual"
+WHERE member_casual = "casual"
+```
 
-
+![image](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/046a642e-20b0-4b8a-8038-bd014bfa0506)
 
 Similar to member customers, casual bicycle trips had a minimum duration of 1 minute. The maximum duration for casual bicycle trips was slightly lower than that for members. However, the average duration for casual bicycle trips was nearly twice as many as members. This suggested that most casual riders tended to take medium-length journeys.
-Duration by rideable types
+
+**Duration by rideable types**
+
 Additionally, I broke down the usage duration by rideable types.
-Member
+
+**Member**
+
+```
 SELECT
 rideable_type,
 MIN(duration_mins) AS Min,
@@ -384,23 +434,36 @@ AVG(duration_mins) AS AVG
 FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
 WHERE member_casual = "member"
 GROUP BY rideable_type
+```
+
+![image](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/62be2d53-f212-4137-b52b-6fbcc4cb3cfb)
 
 Classic and electric bikes had the same minimum usage duration of 1 minute. About maximum, electric bikes generally had a shorter usage duration. The average of the two rideable types was nearly equal (12.68 vs 10.37 minutes) indicating members used these types for short trips. 
-Casuals  
+
+**Casuals**
+
+```
 SELECT
 rideable_type,
 MIN(duration_mins) AS Min,
 MAX(duration_mins) AS MAX,
 AVG(duration_mins) AS AVG
 FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_final`
-WHERE
- member_casual = "casual"
+WHERE member_casual = "casual"
 GROUP BY rideable_type
+```
+
+![image](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/2afc5390-c7b2-48f8-9f85-7b854eeb9885)
 
 The minimum ride duration for all three types of bikes was 1 minute. Among them, docked bikes had the highest maximum duration. Electric bikes were commonly used for short trips, averaging around 14.5 minutes, while classic bikes served medium trips with approximately 25.5 minutes. Docked bikes were preferred for longer journeys, with an average usage time of 52 minutes.
-4.3. Top start stations
+
+#### 4.3. Top start stations
+
 I identified the top 5 start stations based on total trips. Furthermore, I analyzed these stations by rideable types to understand preferences.
-Member
+
+**Member**
+
+```
 SELECT start_station_name,
 COUNT(*) AS total_trips,
 COUNTIF(rideable_type = "classic_bike") AS classic_bike_trips,
@@ -410,11 +473,15 @@ WHERE member_casual = "member"
 GROUP BY start_station_name
 ORDER BY total_trips DESC
 LIMIT 5
+```
 
+![image](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/83ead9af-2bce-46a7-a1ce-1e876efa75d5)
 
 The starting stations for members were typically situated in the northwest area of Chicago city. Among them, Kingsbury St & Kinzie St, Clinton St & Washington Blvd, and Clark St & Elm St emerged as the top destinations, consistently drawing a substantial number of riders. Classic bicycles were the most popular choice at all these stations.
 
-Casuals
+**Casuals**
+
+```
 SELECT start_station_name,
 COUNT(*) AS total_trips,
 COUNTIF(rideable_type = "docked_bike") AS docked_bike_trips,
@@ -425,36 +492,57 @@ WHERE member_casual = "casual"
 GROUP BY start_station_name
 ORDER BY total_trips DESC
 LIMIT 5
+```
+
+![image](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/ec684c7b-896c-4f52-b93f-e3b9806bfc60)
 
 Unlike members, casual customers tended to favor start stations in the northeast of Chicago city. Streeter Dr & Grand Ave, DuSable Lake Shore Dr & Monroe St, and Michigan Ave & Oak St emerged as the top choices for most riders. Classic bikes were the most preferred ride option across all these stations.
-5. Share Phrase
+
+### 5. Share Phrase
+
 In the Share Phase of our data analysis process, I developed a comprehensive dashboard using Tableau Public to present key insights from our examination of Cyclistic trip data for the year 2023. This visual analysis focused specifically on comparing the behaviors and patterns of Cyclistic's members and casuals across various metrics, including total trips taken, usage duration, and popular starting stations.
 
-5.1. Visualizations
-Members
+#### 5.1. Visualizations
+**Members**
+<div class='tableauPlaceholder' id='viz1713680375281' style='position: relative'><noscript><a href='#'><img alt='Tableau de bord 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Cy&#47;CyclisticTrips2023&#47;Tableaudebord1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='CyclisticTrips2023&#47;Tableaudebord1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Cy&#47;CyclisticTrips2023&#47;Tableaudebord1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='fr-FR' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1713680375281');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else { vizElement.style.width='100%';vizElement.style.height='2077px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+**Casuals**
 
-Casuals
 
+Viewers can also access the dashboard here: https://public.tableau.com/views/CyclisticTrips2023/Tableaudebord1?:language=en-US&:sid=&:display_count=n&:origin=viz_share_link
 
-Viewers can also access the dashboard here: https://public.tableau.com/views/CyclisticTrips2023/Tableaudebord1?:language=en-US&:sid=&:display_count=n&:origin=viz_share_link 
-5.2. Key findings
-Members took more trips than casual customers.
-Classic bikes were the preferred choice for both members and casual customers, followed by electric bikes.
-Casual customers used docked bikes, whereas members did not.
-Casual riders typically opt for medium-length trips, while members prefer shorter ones.
-Members favored classic and electric bikes for short trips, while casual customers used docked bikes for long trips, classic bikes for medium trips, and electric bikes for short trips.
-Member start stations were mainly located in the northwest of Chicago, while casual riders tended to start in the northeast.
-Trip volumes for both members and casuals increased during warmer months and decreased in cooler ones.
-Members were more active on weekdays, whereas casual customers tended to ride more on weekends.
-Members preferred riding throughout the day, from morning to evening, while casual riders primarily took trips in the afternoon and evening.
+#### 5.2. Key findings
 
-6. Act Phrase
-Top recommendations
-Event Series in the Northeast: Launch a series of engaging community events in parks and popular public spaces in the northeast of Chicago. These events are designed to highlight the advantages of being a member, including convenient access and exclusive benefits such as guaranteed bike availability, reward points, and the opportunity for non-members to try the services at no cost.
-Warm Weather Campaigns: Introduce a ‘Summer Ride Pass’ that offers unlimited rides during the warmer months at a flat rate, with the option to convert to a full membership at the end of the season.
-Weekend Family Packages: Offer discounted group rates for families or friends to enjoy weekend rides together, potentially including guided tour options to explore new areas.
-Off-Peak Incentives: Implement a dynamic pricing model where rides are cheaper during off-peak hours, encouraging usage throughout the day and reducing congestion during peak times.
-Long Trip Switch Promotion: Encourage casual riders to try classic or electric bikes for their longer trips with a ‘Switch & Save’ campaign, offering a significant discount on the first few rides when switching from docked bikes.
+- Members took more trips than casual customers.
+  
+- Classic bikes were the preferred choice for both members and casual customers, followed by electric bikes.
+  
+- Casual customers used docked bikes, whereas members did not.
+  
+- Casual riders typically opt for medium-length trips, while members prefer shorter ones.
+  
+- Members favored classic and electric bikes for short trips, while casual customers used docked bikes for long trips, classic bikes for medium trips, and electric bikes for short trips.
+  
+- Member start stations were mainly located in the northwest of Chicago, while casual riders tended to start in the northeast.
+  
+- Trip volumes for both members and casuals increased during warmer months and decreased in cooler ones.
+  
+- Members were more active on weekdays, whereas casual customers tended to ride more on weekends.
+  
+- Members preferred riding throughout the day, from morning to evening, while casual riders primarily took trips in the afternoon and evening.
+
+### 6. Act Phrase
+
+**Top recommendations**
+
+- Event Series in the Northeast: Launch a series of engaging community events in parks and popular public spaces in the northeast of Chicago. These events are designed to highlight the advantages of being a member, including convenient access and exclusive benefits such as guaranteed bike availability, reward points, and the opportunity for non-members to try the services at no cost.
+
+- Warm Weather Campaigns: Introduce a ‘Summer Ride Pass’ that offers unlimited rides during the warmer months at a flat rate, with the option to convert to a full membership at the end of the season.
+  
+- Weekend Family Packages: Offer discounted group rates for families or friends to enjoy weekend rides together, potentially including guided tour options to explore new areas.
+  
+- Off-Peak Incentives: Implement a dynamic pricing model where rides are cheaper during off-peak hours, encouraging usage throughout the day and reducing congestion during peak times.
+  
+- Long Trip Switch Promotion: Encourage casual riders to try classic or electric bikes for their longer trips with a ‘Switch & Save’ campaign, offering a significant discount on the first few rides when switching from docked bikes.
 
 ##Conclusion
 This project presented both a significant challenge and a valuable learning opportunity. Throughout its course, I knew how to carry out six phases of data analysis. Utilizing tools such as SQL in BigQuery, and Tableau, I was able to use data to address the problem. My analysis culminated in recommendations that could inform the company's marketing strategy effectively.
