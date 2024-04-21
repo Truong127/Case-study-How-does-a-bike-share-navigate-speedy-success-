@@ -160,25 +160,27 @@ Reviewing the schema of the ‘Cyclistic_Trip_2023’ table, it could be seen th
 I began cleaning data with the DISTINCT operator to check duplicates. This operator helped display a subset of data that only shows unique records.
 
 ```
-SELECT DISTINCT *
+SELECT COUNT(DISTINCT ride_id) AS total_distinct_rows
 FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023`
 ```
+![image](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/e4b5c3d3-9408-46ae-ad3d-83161b6accf4)
 
 After running the query, the result showed the total records of 5719877 the same as the original. So I state that there is no duplicate in the data.
 
 #### 3.5. Handle Missing Values
 
-I previewed the data frame and found that there are missing values in the start_station_name, start_station_id, end_station_name, and end_station_id.
+I previewed the data frame and found that there are missing values in the start_station_name, start_station_id, end_station_name, and end_station_id. So, I used IS NULL to check how many records contain missing values in these columns.
 
-I used IS NULL to check how many records contain missing values in these columns.
-
-SELECT *
+```
+SELECT COUNT(*) AS total_nulls
 FROM `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023`
-WHERE 
-start_station_name IS NULL OR start_station_id IS NULL OR end_station_id IS NULL OR end_station_name IS NULL
+WHERE start_station_name IS NULL OR start_station_id IS NULL OR end_station_id IS NULL OR end_station_name IS NULL
+```
+![image](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/754e513d-4f28-4b78-882b-29631769f32b)
 
 There are 1388054 records containing NULL values in data which capture 24% Cyclistic_Trip_2023. I decided to remove these records to ensure the analysis process was not affected. IS NOT NULL will be used to remove NULL records and the result will be saved in a new table named ”Cyclistic_Trip_2023_Clean”
 
+```
 CREATE TABLE 
 `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023_Clean` AS
 SELECT
@@ -187,7 +189,7 @@ FROM
 `cyclistic-417415.Cyclistic_history_trips_data.Cyclistic_Trip_2023`
 WHERE
 (start_station_id IS NOT NULL AND start_station_name IS NOT NULL) AND (end_station_id IS NOT NULL AND end_station_name IS NOT NULL)
-
+```
 
 #### 3.6. Adding New Columns and Removing Unnecessary Columns
 
