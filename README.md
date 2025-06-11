@@ -590,7 +590,7 @@ In the Share Phase of our data analysis process, I developed a comprehensive das
 
 ![Top Member Start Stations](https://github.com/user-attachments/assets/85f309b2-b291-44e4-b95d-2df7dc0bf04f)
 
-Viewers can also access the visuals here: [https://public.tableau.com/views/CyclisticTrips2023/Tableaudebord1?:language=en-US&:sid=&:display_count=n&:origin=viz_share_link]
+Viewers can also access the visuals here: [https://public.tableau.com/views/Durationanalysis/DurationAnalysis?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link]
 
 #### 5.2. Key findings
 
