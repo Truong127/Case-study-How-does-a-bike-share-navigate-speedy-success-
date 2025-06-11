@@ -580,15 +580,17 @@ Unlike members, casual customers tended to favor start stations in the northeast
 In the Share Phase of our data analysis process, I developed a comprehensive dashboard using Tableau Public to present key insights from our examination of Cyclistic trip data for the year 2023. This visual analysis focused specifically on comparing the behaviors and patterns of Cyclistic's members and casuals across various metrics, including total trips taken, usage duration, and popular starting stations.
 
 #### 5.1. Visualizations
-**Members**
+![Total trips](https://github.com/user-attachments/assets/20eea3bd-8198-463b-ae15-c03817d2d2f9)
 
-![Tableau de bord 1 (2)](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/ee842f30-9afb-4fcc-b503-7a54c8d78c59)
+![Rideable type by trips](https://github.com/user-attachments/assets/b80d27a3-1a2c-49d8-b441-5e09bccbed79)
 
-**Casuals**
+![Duration Analysis](https://github.com/user-attachments/assets/cdcd6b6d-5d7c-4c55-9927-ecbca65931d8)
 
-![Tableau de bord 1 (3)](https://github.com/Truong127/Case-study-How-does-a-bike-share-navigate-speedy-success-/assets/160266278/0f7085fa-0204-4263-b3ce-f7f51b23fe35)
+![Top Casual Start Stations](https://github.com/user-attachments/assets/11848784-f0cc-4b05-bff8-e8b158e1b29d)
 
-Viewers can also access the dashboard here: [https://public.tableau.com/views/CyclisticTrips2023/Tableaudebord1?:language=en-US&:sid=&:display_count=n&:origin=viz_share_link]
+![Top Member Start Stations](https://github.com/user-attachments/assets/85f309b2-b291-44e4-b95d-2df7dc0bf04f)
+
+Viewers can also access the visuals here: [https://public.tableau.com/views/CyclisticTrips2023/Tableaudebord1?:language=en-US&:sid=&:display_count=n&:origin=viz_share_link]
 
 #### 5.2. Key findings
 
